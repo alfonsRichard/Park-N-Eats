@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 
-class ForgotwithEmailPage extends StatefulWidget {
+class ForgotwithPhonenumberPage extends StatefulWidget {
+  const ForgotwithPhonenumberPage({super.key});
+
   @override
-  _ForgotwithEmailPageState createState() => _ForgotwithEmailPageState();
+  _ForgotwithPhonenumberPageState createState() => _ForgotwithPhonenumberPageState();
 }
 
-class _ForgotwithEmailPageState extends State<ForgotwithEmailPage> {
-  final TextEditingController _emailController = TextEditingController();
+class _ForgotwithPhonenumberPageState extends State<ForgotwithPhonenumberPage> {
+  final TextEditingController _phoneController = TextEditingController();
   bool _isHovering = false;
 
   @override
@@ -15,36 +17,36 @@ class _ForgotwithEmailPageState extends State<ForgotwithEmailPage> {
       appBar: AppBar(
         backgroundColor: Colors.white,
         elevation: 0,
-        iconTheme: IconThemeData(color: Colors.black),
+        iconTheme: const IconThemeData(color: Colors.black),
       ),
       body: Padding(
         padding: const EdgeInsets.all(20.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
-            SizedBox(height: 50),
+            const SizedBox(height: 50),
             Container(
               width: 100,
               height: 100,
-              decoration: BoxDecoration(
+              decoration: const BoxDecoration(
                 shape: BoxShape.circle,
                 color: Colors.black,
               ),
-              child: Icon(
-                Icons.email,
+              child: const Icon(
+                Icons.phone,
                 color: Colors.white,
                 size: 50,
               ),
             ),
-            SizedBox(height: 50),
-            Text(
+            const SizedBox(height: 50),
+            const Text(
               'Forget Password',
               style: TextStyle(
                 fontSize: 24,
                 fontWeight: FontWeight.bold,
               ),
             ),
-            SizedBox(height: 10),
+            const SizedBox(height: 10),
             Text(
               'Select one of the options given below to reset your password.',
               textAlign: TextAlign.center,
@@ -53,50 +55,50 @@ class _ForgotwithEmailPageState extends State<ForgotwithEmailPage> {
                 color: Colors.grey[600],
               ),
             ),
-            SizedBox(height: 30),
+            const SizedBox(height: 30),
             MouseRegion(
               onEnter: (_) => setState(() => _isHovering = true),
               onExit: (_) => setState(() => _isHovering = false),
               child: Container(
-                padding: EdgeInsets.symmetric(horizontal: 10.0, vertical: 5.0),
+                padding: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 5.0),
                 decoration: BoxDecoration(
                   border: Border.all(color: _isHovering ? Colors.black : Colors.grey),
                   borderRadius: BorderRadius.circular(5.0),
                 ),
                 child: Row(
                   children: <Widget>[
-                    Icon(Icons.email, color: Colors.black),
-                    SizedBox(width: 10),
+                    const Icon(Icons.phone, color: Colors.black),
+                    const SizedBox(width: 10),
                     Expanded(
                       child: TextField(
-                        controller: _emailController,
-                        decoration: InputDecoration(
+                        controller: _phoneController,
+                        decoration: const InputDecoration(
                           border: InputBorder.none,
-                          hintText: 'E-Mail',
+                          hintText: 'Phone Number',
                           hintStyle: TextStyle(fontSize: 16, color: Colors.black),
                         ),
-                        keyboardType: TextInputType.emailAddress,
+                        keyboardType: TextInputType.phone,
                       ),
                     ),
                   ],
                 ),
               ),
             ),
-            SizedBox(height: 30),
+            const SizedBox(height: 30),
             SizedBox(
               width: double.infinity,
               height: 50,
               child: ElevatedButton(
                 onPressed: () {
                   // Handle Next button press
-                  String email = _emailController.text;
-                  // Implement your logic to handle the email input
+                  String phoneNumber = _phoneController.text;
+                  // Implement your logic to handle the phone number input
                 },
-                child: Text('Next'),
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.black,
                   foregroundColor: Colors.white,
                 ),
+                child: const Text('Next'),
               ),
             ),
           ],

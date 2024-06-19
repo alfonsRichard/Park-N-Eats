@@ -19,7 +19,8 @@ class _AccountPageState extends State<AccountPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Account'),
+        automaticallyImplyLeading: false, // Add this line to remove the back arrow
+        title: const Text('Account Page'),
         backgroundColor: Colors.white,
         elevation: 0,
         iconTheme: const IconThemeData(color: Colors.black),
@@ -55,7 +56,7 @@ class _AccountPageState extends State<AccountPage> {
                 );
               },
             ),
-            Divider(),
+            const Divider(),
             ListTile(
               title: const Text('My Cart'),
               onTap: () {
@@ -65,7 +66,7 @@ class _AccountPageState extends State<AccountPage> {
                 // );
               },
             ),
-            Divider(),
+            const Divider(),
             ListTile(
               title: const Text('My Balance'),
               onTap: () {
@@ -75,7 +76,7 @@ class _AccountPageState extends State<AccountPage> {
                 );
               },
             ),
-            Divider(),
+            const Divider(),
             ListTile(
               title: const Text('My Points'),
               onTap: () {
@@ -85,7 +86,7 @@ class _AccountPageState extends State<AccountPage> {
                 );
               },
             ),
-            Divider(),
+            const Divider(),
             ListTile(
               title: const Text('About'),
               onTap: () {
@@ -95,7 +96,7 @@ class _AccountPageState extends State<AccountPage> {
                 // );
               },
             ),
-            Divider(),
+            const Divider(),
             ListTile(
               title: const Text('Logout'), // Added logout button
               onTap: () {

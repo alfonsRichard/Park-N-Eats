@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'signuppage.dart';
 import 'Home_Page/homepage.dart';
-import 'ForgotwithEmailPage.dart';
-import 'FrogotwithPhonenumberPage.dart';  // Ensure this path is correct
+import 'ForgotPassword/ForgotwithEmailPage.dart';
+import 'ForgotPassword/FrogotwithPhonenumberPage.dart';  // Ensure this path is correct
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -112,7 +112,7 @@ class _LoginPageState extends State<LoginPage> {
                                 onTap: () {
                                   Navigator.push(
                                     context,
-                                    MaterialPageRoute(builder: (context) => ForgotwithEmailPage()),
+                                    MaterialPageRoute(builder: (context) => const ForgotwithEmailPage()),
                                   );
                                 },
                                 child: Container(
@@ -123,7 +123,7 @@ class _LoginPageState extends State<LoginPage> {
                                   ),
                                   child: Row(
                                     children: [
-                                      Icon(Icons.email, size: 40),
+                                      const Icon(Icons.email, size: 40),
                                       const SizedBox(width: 10),
                                       Expanded(
                                         child: Column(
@@ -149,7 +149,7 @@ class _LoginPageState extends State<LoginPage> {
                                 onTap: () {
                                   Navigator.push(
                                     context,
-                                    MaterialPageRoute(builder: (context) => ForgotwithPhonenumberPage()),
+                                    MaterialPageRoute(builder: (context) => const ForgotwithPhonenumberPage()),
                                   );
                                 },
                                 child: Container(
@@ -160,7 +160,7 @@ class _LoginPageState extends State<LoginPage> {
                                   ),
                                   child: Row(
                                     children: [
-                                      Icon(Icons.phone, size: 40),
+                                      const Icon(Icons.phone, size: 40),
                                       const SizedBox(width: 10),
                                       Expanded(
                                         child: Column(

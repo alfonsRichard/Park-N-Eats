@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'splashscreen.dart';
+import 'package:myapp/ForgotPassword/otpscreen.dart';
+import 'package:myapp/ForgotPassword/ForgotwithEmailPage.dart'; // Make sure the import path is correct
+import 'package:myapp/splashscreen.dart'; // Adjust the import path as needed
 
 void main() {
   runApp(const MyApp());
@@ -17,7 +19,12 @@ class MyApp extends StatelessWidget {
         fontFamily: 'Poppins',
       ),
       debugShowCheckedModeBanner: false,
-      home: const SplashScreen(),
+      initialRoute: '/',
+      routes: {
+        '/': (context) => const SplashScreen(),
+        '/forgot-with-email': (context) => const ForgotwithEmailPage(),
+        '/otp': (context) => const OTPscreen(),
+      },
     );
   }
 }

@@ -41,20 +41,21 @@ class _OrderPageState extends State<OrderPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: const Color.fromARGB(255, 255, 255, 255), // Background color as per the Figma design
-      appBar: AppBar(
-        backgroundColor: Colors.white, // White background for AppBar
-        title: const Align(
-          alignment: Alignment.centerLeft,
-          child: Text(
-            'Order',
-            style: TextStyle(
-              color: Colors.black, // Change text color to black
-              fontSize: 20,
-              fontWeight: FontWeight.bold,
-            ),
-          ),
-        ),
-      ),
+      // appBar: AppBar(
+      //   automaticallyImplyLeading: false, 
+      //   backgroundColor: Colors.white, 
+        // title: const Align(
+        //   alignment: Alignment.centerLeft,
+        //   child: Text(
+        //     'Order',
+        //     style: TextStyle(
+        //       color: Colors.black, // Change text color to black
+        //       fontSize: 20,
+        //       fontWeight: FontWeight.bold,
+        //     ),
+        //   ),
+        // ),
+      // ),
       body: Center(
         child: CustomScrollView(
           slivers: [
