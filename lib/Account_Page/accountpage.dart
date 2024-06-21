@@ -48,7 +48,7 @@ class _AccountPageState extends State<AccountPage> {
                   ),
                   SizedBox(width: 10), // Add space between the avatar and text
                   Text(
-                    'Salsa',
+                    'Richard',
                     style: TextStyle(
                       fontSize: 24,
                       fontWeight: FontWeight.bold,

@@ -91,7 +91,7 @@ class _HomePageState extends State<HomePage> {
                   const Row(
                     children: [
                       Text(
-                        'Hi, Salsa',
+                        'Hi, Richard',
                         style: TextStyle(
                           fontSize: 24,
                           fontWeight: FontWeight.bold,

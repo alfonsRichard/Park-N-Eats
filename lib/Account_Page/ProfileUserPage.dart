@@ -10,7 +10,7 @@ class ProfileUserPage extends StatefulWidget {
 }
 
 class _ProfileUserPageState extends State<ProfileUserPage> {
-  final TextEditingController _usernameController = TextEditingController(text: 'Salsa');
+  final TextEditingController _usernameController = TextEditingController(text: 'Richard');
   final TextEditingController _phoneController = TextEditingController(text: '08123547968');
   final TextEditingController _emailController = TextEditingController(text: 'sals3728@gmail.com');
   final TextEditingController _passwordController = TextEditingController(text: 'sa********');
