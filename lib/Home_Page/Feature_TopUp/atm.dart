@@ -7,6 +7,10 @@ class ATMPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        leading: IconButton(
+          icon: const Icon(Icons.chevron_left),
+          onPressed: () => Navigator.of(context).pop(),
+        ),
         title: const Text('ATM'),
         backgroundColor: Colors.white,
         elevation: 0,
@@ -38,7 +42,7 @@ class ATMPage extends StatelessWidget {
                       Icon(Icons.monetization_on, color: Colors.white, size: 30),
                       SizedBox(width: 5),
                       Text(
-                        'Rp 150.000,00',
+                        'Rp 500.000,00',
                         style: TextStyle(
                           fontSize: 24,
                           fontWeight: FontWeight.bold,

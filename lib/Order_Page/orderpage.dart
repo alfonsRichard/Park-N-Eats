@@ -1,6 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:myapp/Home_Page/homepage.dart'; // Import HomePage
+import 'package:myapp/Order_Page/bundlepackage.dart';
+import 'package:myapp/Order_Page/signaturebox.dart';
 import 'package:myapp/navbar.dart';
+import 'package:myapp/Order_Page/everydayvalue.dart'; // Import EverydayValuePage
+import 'package:myapp/Order_Page/emptycart.dart'; // Import CartEmptyPage
 
 class OrderPage extends StatefulWidget {
   const OrderPage({super.key});
@@ -41,21 +46,29 @@ class _OrderPageState extends State<OrderPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: const Color.fromARGB(255, 255, 255, 255), // Background color as per the Figma design
-      // appBar: AppBar(
-      //   automaticallyImplyLeading: false, 
-      //   backgroundColor: Colors.white, 
-        // title: const Align(
-        //   alignment: Alignment.centerLeft,
-        //   child: Text(
-        //     'Order',
-        //     style: TextStyle(
-        //       color: Colors.black, // Change text color to black
-        //       fontSize: 20,
-        //       fontWeight: FontWeight.bold,
-        //     ),
-        //   ),
-        // ),
-      // ),
+      appBar: AppBar(
+        leading: IconButton(
+          icon: const Icon(Icons.chevron_left),
+          onPressed: () {
+            Navigator.pushReplacement(
+              context,
+              MaterialPageRoute(builder: (context) => const HomePage()),
+            );
+          },
+        ),
+        backgroundColor: Colors.white, // White background for AppBar
+        title: const Align(
+          alignment: Alignment.centerLeft,
+          child: Text(
+            'Order',
+            style: TextStyle(
+              color: Colors.black, // Change text color to black
+              fontSize: 20,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+        ),
+      ),
       body: Center(
         child: CustomScrollView(
           slivers: [
@@ -74,7 +87,10 @@ class _OrderPageState extends State<OrderPage> {
                     IconButton(
                       icon: const Icon(Icons.shopping_cart, color: Color.fromARGB(255, 97, 94, 252), size: 35), // Purple cart icon
                       onPressed: () {
-                        // Add your shopping cart action here
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => const CartEmptyPage()),
+                        );
                       },
                     ),
                   ],
@@ -105,9 +121,24 @@ class _OrderPageState extends State<OrderPage> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
-                      _buildCategoryCard('Everyday Value', 'assets/img/everydayvalue.png'),
-                      _buildCategoryCard('Bundle Package', 'assets/img/bundlepackage.png'),
-                      _buildCategoryCard('Signature Box', 'assets/img/signaturebox.png'),
+                      _buildCategoryCard('Everyday Value', 'assets/img/everydayvalue.png', () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => const EverydayValuePage()),
+                        );
+                      }),
+                      _buildCategoryCard('Bundle Package', 'assets/img/bundlepackage.png', () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => const BundlePackagePage()),
+                        );
+                      }),
+                      _buildCategoryCard('Signature   Box', 'assets/img/signaturebox.png', () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => const SignatureBoxPage()),
+                        );// Add navigation or action for Signature Box
+                      }),
                     ],
                   ),
                   const SizedBox(height: 16),
@@ -127,23 +158,26 @@ class _OrderPageState extends State<OrderPage> {
     );
   }
 
-  Widget _buildCategoryCard(String title, String imageUrl) {
-    return Card(
-      color: const Color.fromARGB(255, 189, 189, 245), // Card color as per the Figma design
-      child: SizedBox(
-        width: 100,
-        height: 100,
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Image.asset(imageUrl, height: 50, width: 50), // Add logo image
-            const SizedBox(height: 8),
-            Text(
-              title,
-              textAlign: TextAlign.center,
-              style: const TextStyle(color: Colors.black), // Text color black
-            ),
-          ],
+  Widget _buildCategoryCard(String title, String imageUrl, VoidCallback onTap) {
+    return GestureDetector(
+      onTap: onTap,
+      child: Card(
+        color: const Color.fromARGB(255, 189, 189, 245), // Card color as per the Figma design
+        child: SizedBox(
+          width: 100,
+          height: 100,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Image.asset(imageUrl, height: 50, width: 50), // Add logo image
+              const SizedBox(height: 8),
+              Text(
+                title,
+                textAlign: TextAlign.center,
+                style: const TextStyle(color: Colors.black), // Text color black
+              ),
+            ],
+          ),
         ),
       ),
     );

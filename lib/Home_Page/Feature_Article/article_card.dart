@@ -2,15 +2,13 @@ import 'package:flutter/material.dart';
 
 class ArticleCard extends StatelessWidget {
   final String title;
-  final String description;
   final String imageUrl;
 
   const ArticleCard({
-    super.key,
+    Key? key,
     required this.title,
-    required this.description,
     required this.imageUrl,
-  });
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -18,25 +16,35 @@ class ArticleCard extends StatelessWidget {
       margin: const EdgeInsets.symmetric(vertical: 10),
       child: Padding(
         padding: const EdgeInsets.all(10),
-        child: Column(
+        child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Image.asset(imageUrl, width: double.infinity, height: 150, fit: BoxFit.cover),
-            const SizedBox(height: 10),
-            Text(
-              title,
-              style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+            Image.asset(
+              imageUrl,
+              width: 150,  // Adjust the width as per your requirement
+              height: 100, // Adjust the height as per your requirement
+              fit: BoxFit.cover,
             ),
-            const SizedBox(height: 5),
-            Text(description),
-            const SizedBox(height: 10),
-            TextButton(
-              style: TextButton.styleFrom(
-                backgroundColor: const Color.fromARGB(255, 97, 94, 252),
-                foregroundColor: Colors.white,
+            const SizedBox(width: 10),
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    title,
+                    style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+                  ),
+                  const SizedBox(height: 10),
+                  TextButton(
+                    style: TextButton.styleFrom(
+                      backgroundColor: const Color.fromARGB(255, 97, 94, 252),
+                      foregroundColor: Colors.white,
+                    ),
+                    onPressed: () {},
+                    child: const Text('View More'),
+                  ),
+                ],
               ),
-              onPressed: () {},
-              child: const Text('View More'),
             ),
           ],
         ),
@@ -56,17 +64,18 @@ class ArticleList extends StatelessWidget {
       children: const <Widget>[
         ArticleCard(
           title: 'Jatim Park 1',
-          description: 'Plan your dream trip with a Getaway Deal',
           imageUrl: 'assets/img/jatim1.jpg',
         ),
         ArticleCard(
           title: 'Jatim Park 2',
-          description: 'Plan your dream trip with a Getaway Deal',
-          imageUrl: 'assets/img/jatim1.jpg',
+          imageUrl: 'assets/img/jatim2.jpg',
+        ),
+        ArticleCard(
+          title: 'Jatim Park 3',
+          imageUrl: 'assets/img/jatim3.jpg',
         ),
         ArticleCard(
           title: 'KFC',
-          description: 'Plan your dream trip with a Getaway Deal',
           imageUrl: 'assets/img/kfc.jpg',
         ),
         // Add more ArticleCards as needed

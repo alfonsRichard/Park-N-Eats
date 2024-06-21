@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
+import 'dart:io';
 
 class ProfileUserPage extends StatefulWidget {
   const ProfileUserPage({super.key});
@@ -19,10 +21,27 @@ class _ProfileUserPageState extends State<ProfileUserPage> {
   bool _isEditingPassword = false;
   bool _isPasswordVisible = false;
 
+  File? _image;
+
+  Future<void> _pickImage(ImageSource source) async {
+    final picker = ImagePicker();
+    final pickedFile = await picker.pickImage(source: source);
+
+    if (pickedFile != null) {
+      setState(() {
+        _image = File(pickedFile.path);
+      });
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        leading: IconButton(
+          icon: const Icon(Icons.chevron_left),
+          onPressed: () => Navigator.of(context).pop(),
+        ),
         title: const Text('Profile User'),
         backgroundColor: Colors.white,
         elevation: 0,
@@ -38,9 +57,26 @@ class _ProfileUserPageState extends State<ProfileUserPage> {
             Row(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                const CircleAvatar(
-                  radius: 30,
-                  backgroundImage: AssetImage('assets/user_avatar.png'),
+                Stack(
+                  children: [
+                    CircleAvatar(
+                      radius: 40,
+                      backgroundColor: Colors.grey,
+                      backgroundImage: _image != null ? FileImage(_image!) : null,
+                      child: _image == null ? const Icon(Icons.person, size: 50) : null,
+                    ),
+                    Positioned(
+                      bottom: 0,
+                      right: 0,
+                      child: InkWell(
+                        onTap: () => _showImageSourceActionSheet(context),
+                        child: const Icon(
+                          Icons.camera_alt,
+                          color: Colors.black,
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
                 const SizedBox(width: 16),
                 Expanded(
@@ -59,20 +95,17 @@ class _ProfileUserPageState extends State<ProfileUserPage> {
                               fontSize: 24, fontWeight: FontWeight.bold),
                         ),
                 ),
-                Positioned(
-                        right: 50,
-                        child: IconButton(
-                          icon: Icon(_isEditingUsername ? Icons.check : Icons.edit),
-                          onPressed: () {
-                            setState(() {
-                              if (_isEditingUsername) {
-                                // Save action can be added here
-                              }
-                              _isEditingUsername = !_isEditingUsername;
-                            });
-                          },
-                        ),
-                      ),
+                IconButton(
+                  icon: Icon(_isEditingUsername ? Icons.check : Icons.edit),
+                  onPressed: () {
+                    setState(() {
+                      if (_isEditingUsername) {
+                        // Save action can be added here
+                      }
+                      _isEditingUsername = !_isEditingUsername;
+                    });
+                  },
+                ),
               ],
             ),
             const SizedBox(height: 32),
@@ -193,6 +226,36 @@ class _ProfileUserPageState extends State<ProfileUserPage> {
           onPressed: isEditing ? onSave : onEdit,
         ),
       ],
+    );
+  }
+
+  void _showImageSourceActionSheet(BuildContext context) {
+    showModalBottomSheet(
+      context: context,
+      builder: (BuildContext context) {
+        return SafeArea(
+          child: Wrap(
+            children: [
+              ListTile(
+                leading: const Icon(Icons.photo_library),
+                title: const Text('Gallery'),
+                onTap: () {
+                  _pickImage(ImageSource.gallery);
+                  Navigator.of(context).pop();
+                },
+              ),
+              ListTile(
+                leading: const Icon(Icons.photo_camera),
+                title: const Text('Camera'),
+                onTap: () {
+                  _pickImage(ImageSource.camera);
+                  Navigator.of(context).pop();
+                },
+              ),
+            ],
+          ),
+        );
+      },
     );
   }
 }

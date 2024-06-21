@@ -19,6 +19,7 @@ class CustomBottomNavigationBar extends StatelessWidget {
       selectedLabelStyle: const TextStyle(color: Color.fromARGB(255, 97, 94, 252)),
       selectedIconTheme: const IconThemeData(color: Color.fromARGB(255, 97, 94, 252)),
       unselectedIconTheme: const IconThemeData(color: Colors.black),
+      showUnselectedLabels: true, // Menampilkan label untuk item yang tidak dipilih
       items: const <BottomNavigationBarItem>[
         BottomNavigationBarItem(
           icon: Icon(Icons.home),

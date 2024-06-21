@@ -86,11 +86,29 @@ flutter:
     - assets/img/crispychicken.png
     - assets/img/signaturebox.png
     - assets/img/burger.png
+    - assets/img/chickenandchips.jpeg
+    - assets/img/mealdeal1.jpeg
+    - assets/img/superbundle.jpg
+    - assets/img/signaturebox2.jpeg
+    - assets/img/signaturebox3.jpg
     - assets/img/logokfc.png
     - assets/img/remove.png
     - assets/img/prize.png
     - assets/img/checked.png
     - assets/img/email.png
+    - assets/img/promo1.png
+    - assets/img/promo2.png
+    - assets/img/promo3.png
+    - assets/img/promo4.png
+    - assets/img/promo5.png
+    - assets/img/promo6.png
+    - assets/img/promo7.png
+    - assets/img/promo8.png
+    - assets/img/promo9.png
+    - assets/img/promo10.png
+    - assets/img/promo11.png
+    - assets/img/promo12.png
+  
     
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

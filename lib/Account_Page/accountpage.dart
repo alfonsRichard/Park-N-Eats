@@ -3,7 +3,10 @@ import 'package:myapp/navbar.dart';
 import 'package:myapp/Account_Page/ProfileUserPage.dart';
 import 'package:myapp/Home_Page/Feature_TopUp/topuppage.dart';
 import 'package:myapp/Home_Page/Feature_Rewards/rewardpage.dart';
-import 'package:myapp/onboarding.dart'; // Import the onboarding page
+import 'package:myapp/onboarding.dart';
+
+import 'aboutpage.dart';
+import 'helppage.dart'; // Import the onboarding page
 
 class AccountPage extends StatefulWidget {
   const AccountPage({super.key});
@@ -19,91 +22,117 @@ class _AccountPageState extends State<AccountPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        automaticallyImplyLeading: false, // Add this line to remove the back arrow
-        title: const Text('Account Page'),
+        leading: IconButton(
+          icon: const Icon(Icons.chevron_left),
+          onPressed: () => Navigator.of(context).pop(),
+        ),
+        title: const Text('Account'),
         backgroundColor: Colors.white,
         elevation: 0,
-        iconTheme: const IconThemeData(color: Colors.black),
+        automaticallyImplyLeading: false, // This removes the back button
         titleTextStyle: const TextStyle(
-            color: Colors.black, fontSize: 20, fontWeight: FontWeight.bold),
+          color: Colors.black, fontSize: 20, fontWeight: FontWeight.bold),
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(20.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            const CircleAvatar(
-              radius: 40,
-              backgroundColor: Colors.grey,
-              child: Icon(Icons.person, size: 50),
-            ),
-            const SizedBox(height: 10),
-            const Text(
-              'Salsa',
-              style: TextStyle(
-                fontSize: 24,
-                fontWeight: FontWeight.bold,
-                color: Colors.black,
+      body: SingleChildScrollView( // Added SingleChildScrollView
+        child: Padding(
+          padding: const EdgeInsets.all(20.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const Row(
+                children: [
+                  CircleAvatar(
+                    radius: 40,
+                    backgroundColor: Colors.grey,
+                    child: Icon(Icons.person, size: 50),
+                  ),
+                  SizedBox(width: 10), // Add space between the avatar and text
+                  Text(
+                    'Salsa',
+                    style: TextStyle(
+                      fontSize: 24,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.black,
+                    ),
+                  ),
+                ],
               ),
-            ),
-            const SizedBox(height: 20),
-            ListTile(
-              title: const Text('Profile User'),
-              onTap: () {
-                Navigator.push(
+              const SizedBox(height: 20),
+              ListTile(
+                leading: const Icon(Icons.person_outline), // Add icon
+                title: const Text('Profile User'),
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => const ProfileUserPage()),
+                  );
+                },
+              ),
+              const Divider(),
+              ListTile(
+                leading: const Icon(Icons.shopping_cart_outlined), // Add icon
+                title: const Text('My Cart'),
+                onTap: () {
+                  // Navigator.push(
+                  // context,
+                  // MaterialPageRoute(builder: (context) => const MyCartPage()),
+                  // );
+                },
+              ),
+              const Divider(),
+              ListTile(
+                leading: const Icon(Icons.monetization_on_outlined), // Add icon
+                title: const Text('My Balance'),
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => const TopUpPage()),
+                  );
+                },
+              ),
+              const Divider(),
+              ListTile(
+                leading: const Icon(Icons.star_outline), // Add icon
+                title: const Text('My Points'),
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => const RewardsPage()),
+                  );
+                },
+              ),
+              const Divider(),
+              ListTile(
+                leading: const Icon(Icons.info_outline), // Add icon
+                title: const Text('About'),
+                onTap: () {
+                  Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => const ProfileUserPage()),
-                );
-              },
-            ),
-            const Divider(),
-            ListTile(
-              title: const Text('My Cart'),
-              onTap: () {
-                // Navigator.push(
-                // context,
-                // MaterialPageRoute(builder: (context) => const MyCartPage()),
-                // );
-              },
-            ),
-            const Divider(),
-            ListTile(
-              title: const Text('My Balance'),
-              onTap: () {
-                Navigator.push(
+                  MaterialPageRoute(builder: (context) => const AboutPage()),
+                  );
+                },
+              ),
+              const Divider(),
+              ListTile(
+                leading: const Icon(Icons.help_outline), // Add icon
+                title: const Text('Help Center'),
+                onTap: () {
+                  Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => const TopUpPage()),
-                );
-              },
-            ),
-            const Divider(),
-            ListTile(
-              title: const Text('My Points'),
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => const RewardsPage()),
-                );
-              },
-            ),
-            const Divider(),
-            ListTile(
-              title: const Text('About'),
-              onTap: () {
-                // Navigator.push(
-                // context,
-                // MaterialPageRoute(builder: (context) => const AboutPage()),
-                // );
-              },
-            ),
-            const Divider(),
-            ListTile(
-              title: const Text('Logout'), // Added logout button
-              onTap: () {
-                _showLogoutConfirmationDialog(context);
-              },
-            ),
-          ],
+                  MaterialPageRoute(builder: (context) => const HelpPage()),
+                  );
+                },
+              ),
+              const Divider(),
+              ListTile(
+                leading: const Icon(Icons.logout), // Add icon
+                title: const Text('Logout'), // Added logout button
+                onTap: () {
+                  _showLogoutConfirmationDialog(context);
+                },
+              ),
+            ],
+          ),
         ),
       ),
       bottomNavigationBar: CustomBottomNavigationBar(currentIndex: _currentIndex), // Use the custom navbar

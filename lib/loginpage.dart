@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'signuppage.dart';
 import 'Home_Page/homepage.dart';
-import 'ForgotPassword/ForgotwithEmailPage.dart';
-import 'ForgotPassword/FrogotwithPhonenumberPage.dart';  // Ensure this path is correct
+import 'ForgotPassword/ForgotwithEmailPage.dart';  // Ensure this path is correct
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -135,43 +134,6 @@ class _LoginPageState extends State<LoginPage> {
                                             ),
                                             Text(
                                               "Reset via Mail Verification",
-                                              style: Theme.of(context).textTheme.bodySmall,
-                                            ),
-                                          ],
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                              ),
-                              const SizedBox(height: 10.0),
-                              GestureDetector(
-                                onTap: () {
-                                  Navigator.push(
-                                    context,
-                                    MaterialPageRoute(builder: (context) => const ForgotwithPhonenumberPage()),
-                                  );
-                                },
-                                child: Container(
-                                  padding: const EdgeInsets.all(20.0),
-                                  decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(10.0),
-                                    color: Colors.grey.shade200,
-                                  ),
-                                  child: Row(
-                                    children: [
-                                      const Icon(Icons.phone, size: 40),
-                                      const SizedBox(width: 10),
-                                      Expanded(
-                                        child: Column(
-                                          crossAxisAlignment: CrossAxisAlignment.start,
-                                          children: [
-                                            Text(
-                                              "Phone No",
-                                              style: Theme.of(context).textTheme.headlineSmall,
-                                            ),
-                                            Text(
-                                              "Reset via Phone Verification",
                                               style: Theme.of(context).textTheme.bodySmall,
                                             ),
                                           ],
